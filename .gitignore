@@ -102,6 +102,13 @@ out
 dist
 .output
 
+# OpenNext build / generate output
+.open-next/
+
+# Sqlite database files
+*.sqlite
+*.sqlite-*
+
 # Gatsby files
 .cache/
 # Comment in the public line in if your project uses Gatsby and not Next.js
