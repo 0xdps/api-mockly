@@ -22,7 +22,7 @@ export default async function DocsLayout({
   }, {} as Record<string, string[]>)
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex flex-col">
+    <div className="min-h-screen bg-carbon flex flex-col">
       <Header compact />
       
       <div className="flex h-[calc(100vh-4rem)] overflow-hidden">
@@ -37,7 +37,7 @@ export default async function DocsLayout({
         </div>
         
         {/* Main Content - Scrollable */}
-        <div className="flex-1 overflow-y-auto">
+        <div id="content" className="flex-1 overflow-y-auto">
           {children}
         </div>
       </div>

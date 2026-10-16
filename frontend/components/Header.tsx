@@ -1,50 +1,95 @@
+'use client'
+
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Activity, Github, Compass, BookOpen } from 'lucide-react'
+import { usePathname } from 'next/navigation'
+import { Menu, X } from 'lucide-react'
 import { HeaderAuth } from './HeaderAuth'
 
 interface HeaderProps {
   compact?: boolean
 }
 
+const LINKS = [
+  { href: '/templates', label: 'Catalog', event: 'nav_tpl' },
+  { href: '/playground', label: 'Utilities', event: 'nav_pg' },
+  { href: '/docs', label: 'Docs', event: 'nav_docs' },
+]
+
 export function Header({ compact }: HeaderProps) {
+  const pathname = usePathname()
+  const [open, setOpen] = useState(false)
+
+  useEffect(() => {
+    setOpen(false)
+  }, [pathname])
+
   return (
-    <header className="sticky top-0 z-50 border-b border-white/5 bg-slate-900/60 backdrop-blur-xl">
-      <nav className={`py-4 flex items-center justify-between ${compact ? 'px-4' : 'container mx-auto px-4'}`}>
-        <Link href="/" data-umami-event="nav_h" data-umami-label="Header Home" className="flex items-center gap-3 text-2xl font-bold text-white group transition-all">
-          <Image 
-            src="/logo.svg" 
-            alt="Mockly Logo" 
-            width={32} 
-            height={32}
-            className="w-8 h-8 transition-transform group-hover:scale-110"
-          />
-          <span className="tracking-tight">Mockly</span>
+    <header className="sticky top-0 z-50 border-b border-wire bg-carbon/95 backdrop-blur-md">
+      <a href="#content" className="skip-link">Skip to content</a>
+      <nav aria-label="Primary" className={`flex items-center justify-between gap-4 py-3 ${compact ? 'px-4' : 'mx-auto max-w-6xl px-4'}`}>
+        <Link href="/" data-umami-event="nav_h" data-umami-label="Header Home" className="flex items-center gap-2.5 text-white">
+          <Image src="/logo.svg" alt="" width={28} height={28} className="h-7 w-7" />
+          <span className="font-display text-xl tracking-tight">Mockly</span>
         </Link>
-        
-        <div className="flex items-center gap-8">
-          <Link href="/playground" data-umami-event="nav_pg" data-umami-label="Header Playground" className="text-slate-300 hover:text-white transition-colors font-medium text-sm flex items-center gap-2">
-            <Activity className="w-4 h-4" /> Playground
-          </Link>
-          <Link href="/docs" data-umami-event="nav_docs" data-umami-label="Header Docs" className="text-slate-300 hover:text-white transition-colors font-medium text-sm flex items-center gap-2">
-            <BookOpen className="w-4 h-4" /> Docs
-          </Link>
-          <Link href="/templates" data-umami-event="nav_tpl" data-umami-label="Header Explore" className="text-slate-300 hover:text-white transition-colors font-medium text-sm flex items-center gap-2">
-            <Compass className="w-4 h-4" /> Explore
-          </Link>
-          <a 
-            href="https://github.com/0xdps/api-mockly" 
-            target="_blank" 
+
+        <div className="hidden items-center gap-1 md:flex">
+          {LINKS.map((link) => {
+            const active = pathname === link.href || pathname.startsWith(`${link.href}/`)
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                data-umami-event={link.event}
+                aria-current={active ? 'page' : undefined}
+                className={`px-3 py-1.5 text-sm ${active ? 'text-electric' : 'text-slate-300 hover:text-white'}`}
+              >
+                {link.label}
+              </Link>
+            )
+          })}
+          <a
+            href="https://github.com/0xdps/api-mockly"
+            target="_blank"
             rel="noopener noreferrer"
             data-umami-event="nav_gh"
-            data-umami-label="Header GitHub"
-            className="text-slate-300 hover:text-white transition-colors font-medium text-sm flex items-center gap-2"
+            className="px-3 py-1.5 text-sm text-slate-300 hover:text-white"
           >
-            <Github className="w-4 h-4" /> GitHub
+            GitHub
           </a>
           <HeaderAuth />
         </div>
+
+        <button
+          type="button"
+          className="inline-flex h-9 w-9 items-center justify-center border border-wire text-slate-200 md:hidden"
+          aria-expanded={open}
+          aria-controls="mobile-nav"
+          onClick={() => setOpen((value) => !value)}
+        >
+          <span className="sr-only">{open ? 'Close menu' : 'Open menu'}</span>
+          {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+        </button>
       </nav>
+
+      {open && (
+        <div id="mobile-nav" className="border-t border-wire px-4 py-3 md:hidden">
+          <div className="flex flex-col">
+            {LINKS.map((link) => (
+              <Link key={link.href} href={link.href} className="py-2 text-sm text-slate-200">
+                {link.label}
+              </Link>
+            ))}
+            <a href="https://github.com/0xdps/api-mockly" target="_blank" rel="noopener noreferrer" className="py-2 text-sm text-slate-200">
+              GitHub
+            </a>
+            <div className="pt-2">
+              <HeaderAuth />
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   )
 }

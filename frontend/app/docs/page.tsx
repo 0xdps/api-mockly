@@ -22,6 +22,9 @@ import {
 } from 'lucide-react'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
+import { SchemaCircuit } from '@/components/motion/SchemaCircuit'
+import { AuthRails } from '@/components/motion/AuthRails'
+import { MiddlewareTunnel } from '@/components/motion/MiddlewareTunnel'
 
 export const metadata: Metadata = {
   title: 'API Documentation | Mockly',
@@ -139,10 +142,10 @@ const TOC = [
 
 export default function DocsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex flex-col">
+    <div className="min-h-screen bg-carbon flex flex-col">
       <Header />
 
-      <div className="flex-1 container mx-auto px-4 py-10 max-w-7xl">
+      <div id="content" className="flex-1 container mx-auto px-4 py-10 max-w-7xl">
         <div className="flex gap-10">
           {/* ── Sidebar ── */}
           <aside className="hidden lg:block w-52 shrink-0">
@@ -182,7 +185,7 @@ export default function DocsPage() {
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-xs font-medium mb-4">
                 <BookOpen className="w-3.5 h-3.5" /> API Reference
               </div>
-              <h1 className="text-4xl font-bold text-white mb-3">Documentation</h1>
+              <h1 className="font-display text-4xl text-white mb-3">Documentation</h1>
               <p className="text-slate-400 text-lg max-w-2xl">
                 Everything you need to use Mockly — built-in resources, user templates, query parameters, and middleware.
               </p>
@@ -195,6 +198,8 @@ export default function DocsPage() {
                 </Link>
               </div>
             </div>
+
+            <SchemaCircuit />
 
             {/* ── Overview ── */}
             <Section id="overview" title="Overview" icon={Globe}>
@@ -263,6 +268,9 @@ curl "https://api.mockly.codes/products?fields=id,name,price&limit=50"`} />
 
             {/* ── Auth ── */}
             <Section id="auth" title="Authentication" icon={Lock}>
+              <div className="mb-5">
+                <AuthRails />
+              </div>
               <div className="grid md:grid-cols-2 gap-4 mb-5">
                 <div className="bg-slate-900/50 border border-emerald-500/20 rounded-xl p-5">
                   <div className="flex items-center gap-2 mb-3">
@@ -279,8 +287,8 @@ curl "https://api.mockly.codes/products?fields=id,name,price&limit=50"`} />
                     <span className="text-sm font-semibold text-white">User Templates</span>
                     <span className="text-xs text-primary-400 bg-primary-500/10 px-2 py-0.5 rounded-full border border-primary-500/20">API key</span>
                   </div>
-                  <p className="text-xs text-slate-400 mb-3">Custom templates require an API key in the Authorization header.</p>
-                  <CodeBlock code={`curl -H "Authorization: Bearer mk_your_key" \\
+                  <p className="text-xs text-slate-400 mb-3">Custom templates require an API key in the X-API-Key header.</p>
+                  <CodeBlock code={`curl -H "X-API-Key: mk_your_key" \\
   "https://api.mockly.codes/t/{templateId}"`} />
                 </div>
               </div>
@@ -377,6 +385,9 @@ curl "https://api.mockly.codes/products?q=phone&sort=price&order=asc&page=1&limi
               <p className="text-slate-400 text-sm mb-5">
                 Mockly includes built-in middleware for testing resilience, multi-tenancy, and access control.
               </p>
+              <div className="mb-5">
+                <MiddlewareTunnel />
+              </div>
 
               <div className="space-y-5">
                 {/* Delay */}

@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { ReactNode } from 'react'
 import { Volume2, BarChart3, Clock, Settings, Dices, Package, LucideIcon } from 'lucide-react'
+import { MiddlewareTunnel } from '@/components/motion/MiddlewareTunnel'
 
 type TabType = 'echo' | 'status' | 'delay' | 'middleware' | 'chaos'
 
@@ -20,9 +21,20 @@ export default function PlaygroundTemplate({ children }: { children: ReactNode }
   const activeTab = tabs.find(tab => pathname === tab.path)
 
   return (
-    <div className="h-full flex">
-      {/* Sidebar Navigation */}
-      <div className="w-64 bg-slate-900/50 border-r border-slate-700 flex flex-col">
+    <div className="h-full flex flex-col md:flex-row">
+      <div className="flex gap-2 overflow-x-auto border-b border-wire p-3 md:hidden">
+        {tabs.map((tab) => (
+          <Link
+            key={tab.id}
+            href={tab.path}
+            className={`shrink-0 px-3 py-1.5 text-sm ${pathname === tab.path ? 'bg-panel text-electric' : 'text-slate-400'}`}
+          >
+            {tab.label}
+          </Link>
+        ))}
+        <Link href="/templates" className="shrink-0 px-3 py-1.5 text-sm text-slate-400">Catalog</Link>
+      </div>
+      <div className="hidden w-64 border-r border-wire bg-panel md:flex md:flex-col">
         {/* Utility Tools */}
         <div className="flex-1 overflow-y-auto p-3">
           <div className="space-y-1">
@@ -39,8 +51,8 @@ export default function PlaygroundTemplate({ children }: { children: ReactNode }
                     w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all text-left
                     ${
                       pathname === tab.path
-                        ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
-                        : 'text-slate-400 hover:text-slate-300 hover:bg-slate-800/50'
+                        ? 'bg-carbon text-electric border border-electric/40'
+                        : 'text-slate-400 hover:text-slate-200 hover:bg-carbon'
                     }
                   `}
                 >
@@ -60,12 +72,12 @@ export default function PlaygroundTemplate({ children }: { children: ReactNode }
               Resources
             </div>
             <Link
-              href="/resources"
+              href="/templates"
               className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all text-left text-slate-400 hover:text-slate-300 hover:bg-slate-800/50"
             >
               <Package className="w-5 h-5 flex-shrink-0" />
               <div className="flex-1 min-w-0">
-                <div className="font-medium text-sm">Browse Resources</div>
+                <div className="font-medium text-sm">Browse catalog</div>
                 <div className="text-xs text-slate-500 mt-0.5">Test 100+ API endpoints</div>
               </div>
             </Link>
@@ -77,7 +89,7 @@ export default function PlaygroundTemplate({ children }: { children: ReactNode }
       <div className="flex-1 flex flex-col min-w-0">
         {/* Content Header */}
         {activeTab && (
-          <div className="bg-slate-900/30 border-b border-slate-700 px-6 py-4">
+          <div className="bg-carbon border-b border-wire px-6 py-4">
             <div className="flex items-center gap-3">
               {(() => {
                 const Icon = activeTab.icon
@@ -88,6 +100,11 @@ export default function PlaygroundTemplate({ children }: { children: ReactNode }
                 <p className="text-sm text-slate-400">{activeTab.description}</p>
               </div>
             </div>
+          </div>
+        )}
+        {pathname === '/playground/middleware' && (
+          <div className="border-b border-wire px-4 py-4 md:px-6">
+            <MiddlewareTunnel />
           </div>
         )}
 

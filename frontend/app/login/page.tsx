@@ -1,7 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import Link from 'next/link'
 import { startGoogleLogin } from '@/lib/nube'
+import { useState } from 'react'
+import { AuthRails } from '@/components/motion/AuthRails'
 
 const CALLBACK_URL =
   typeof window !== 'undefined'
@@ -30,14 +32,19 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-white mb-2">Sign in to Mockly</h1>
-          <p className="text-slate-400 text-sm">Create templates, manage API keys, and generate custom mock data.</p>
+    <main id="content" className="min-h-screen bg-carbon px-4 py-16">
+      <div className="mx-auto w-full max-w-xl">
+        <div className="mb-6">
+          <Link href="/" className="font-display text-2xl text-white">Mockly</Link>
+          <h1 className="mt-6 font-display text-4xl text-white">Sign in to keep a schema.</h1>
+          <p className="mt-2 text-sm text-slate-400">Create templates and API keys. Built-in resources stay open without an account.</p>
         </div>
 
-        <div className="bg-slate-900 border border-white/10 rounded-2xl p-8 shadow-xl">
+        <div className="mb-6">
+          <AuthRails />
+        </div>
+
+        <div className="border border-wire bg-panel p-6">
           {error && (
             <div className="mb-4 p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
               {error}
@@ -47,7 +54,7 @@ export default function LoginPage() {
           <button
             onClick={handleGoogleLogin}
             disabled={loading}
-            className="w-full flex items-center justify-center gap-3 px-4 py-3 rounded-xl bg-white text-slate-900 font-medium text-sm hover:bg-slate-100 active:bg-slate-200 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+            className="w-full flex items-center justify-center gap-3 px-4 py-3 bg-white text-carbon font-medium text-sm hover:bg-slate-100 disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {loading ? (
               <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -70,6 +77,6 @@ export default function LoginPage() {
           </p>
         </div>
       </div>
-    </div>
+    </main>
   )
 }

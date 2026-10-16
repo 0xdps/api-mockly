@@ -24,6 +24,7 @@ import {
 import { CodeExample } from './CodeExample'
 import { getApiUrl, apiClient } from '@/lib/api'
 import { getGroupIcon } from '@/lib/icons'
+import { FieldFlow } from '@/components/motion/FieldFlow'
 
 const API_URL = getApiUrl()
 const PUBLIC_API = 'https://api.mockly.codes'
@@ -340,12 +341,21 @@ console.log(data)`,
           </p>
         </div>
       </div>
+
+      <FieldFlow
+        resource={resourceName}
+        fields={fieldNames.map((name) => ({
+          name,
+          type: properties[name]?.type,
+          generator: properties[name]?.['x-generator'],
+        }))}
+      />
       
       {/* Two-Column Layout: Request Builder (50%) + Response (50%) */}
       <div className="grid lg:grid-cols-2 gap-4">
         {/* LEFT COLUMN: Request Builder (50%) */}
         <div>
-            <div className="bg-slate-800/40 backdrop-blur-md p-5 rounded-xl border border-white/5 h-[calc(100vh-12rem)] overflow-y-auto shadow-premium">
+            <div className="bg-panel p-5 border border-wire h-[calc(100vh-24rem)] min-h-[22rem] overflow-y-auto">
               <h2 className="text-sm font-bold text-white mb-4 flex items-center gap-2 uppercase tracking-wider text-slate-300">
                 <Terminal className="w-4 h-4 text-primary-400" /> Request Builder
               </h2>
@@ -793,7 +803,7 @@ bg-slate-810/50 backdrop-blur p-4 rounded-lg border border-slate-700
         
         {/* RIGHT COLUMN: Response (50%) */}
         <div>
-          <div className="h-[calc(100vh-10rem)] overflow-y-auto">
+          <div className="h-[calc(100vh-24rem)] min-h-[22rem] overflow-y-auto">
           {(response || error) ? (
             <div ref={responseRef} className="bg-slate-800/40 backdrop-blur-md p-5 rounded-xl border border-white/5 shadow-premium">
               <h2 className="text-sm font-bold text-white mb-4 flex items-center gap-2 uppercase tracking-wider text-slate-300">

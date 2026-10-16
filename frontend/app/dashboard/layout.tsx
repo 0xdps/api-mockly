@@ -55,7 +55,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center">
+      <div className="min-h-screen bg-carbon flex items-center justify-center">
         <svg className="w-8 h-8 animate-spin text-primary-400" fill="none" viewBox="0 0 24 24">
           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
@@ -67,12 +67,22 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   if (!user) return null
 
   return (
-    <div className="h-screen overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex flex-col">
+    <div className="h-screen overflow-hidden bg-carbon flex flex-col">
       <Header compact />
 
+      <nav aria-label="Workspace" className="flex gap-2 overflow-x-auto border-b border-wire px-3 py-2 md:hidden">
+        {NAV_ITEMS.map(({ href, label }) => {
+          const active = pathname === href || (href !== '/dashboard' && pathname.startsWith(href))
+          return (
+            <Link key={href} href={href} className={`shrink-0 px-3 py-1.5 text-sm ${active ? 'text-electric' : 'text-slate-400'}`}>
+              {label}
+            </Link>
+          )
+        })}
+      </nav>
+
       <div className="flex flex-1 min-h-0">
-        {/* Sidebar — fixed height, no scroll */}
-        <aside className="w-56 shrink-0 border-r border-white/5 bg-slate-900/60 flex flex-col">
+        <aside className="hidden w-56 shrink-0 border-r border-wire bg-panel md:flex md:flex-col">
           <div className="px-4 py-3 border-b border-white/5">
             <p className="text-xs text-slate-500 truncate">{user.email}</p>
           </div>
@@ -109,7 +119,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </aside>
 
         {/* Main content — scrollable */}
-        <main className="flex-1 overflow-auto">
+        <main id="content" className="flex-1 overflow-auto">
           {children}
         </main>
       </div>

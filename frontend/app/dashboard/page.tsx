@@ -6,6 +6,7 @@ import { useAuthContext } from '@/components/AuthProvider'
 import { listMyTemplates, getAccessKeyInfo } from '@/lib/mockly-api'
 import type { MocklyTemplate, MocklyAPIKey } from '@/types/mockly'
 import { FileCode2, Key, Plus, Globe, Lock, ArrowRight, Zap, BookOpen, ChevronRight } from 'lucide-react'
+import { AuthRails } from '@/components/motion/AuthRails'
 
 export default function DashboardPage() {
   const { token, user } = useAuthContext()
@@ -28,12 +29,16 @@ export default function DashboardPage() {
 
       {/* Welcome */}
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-white">Hey, {firstName} 👋</h1>
+        <h1 className="font-display text-3xl text-white">Hey, {firstName}</h1>
         <p className="text-slate-400 text-sm mt-1">Your mock API workspace.</p>
       </div>
 
+      <div className="mb-6">
+        <AuthRails />
+      </div>
+
       {/* Stat cards */}
-      <div className="grid grid-cols-2 gap-4 mb-6">
+      <div className="grid grid-cols-1 gap-4 mb-6 sm:grid-cols-2">
         {/* Templates */}
         <div className="relative overflow-hidden bg-slate-900/50 border border-slate-700 rounded-xl p-5 group hover:border-primary-500/30 transition-colors">
           <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-transparent pointer-events-none" />

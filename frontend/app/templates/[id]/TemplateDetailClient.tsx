@@ -18,6 +18,7 @@ import {
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { TemplatePlayground } from '@/components/TemplatePlayground'
+import { FieldFlow } from '@/components/motion/FieldFlow'
 import { getPublicTemplate } from '@/lib/mockly-api'
 import type { MocklyTemplate } from '@/types/mockly'
 
@@ -107,9 +108,9 @@ export function TemplateDetailClient({ id }: { id: string }) {
   const endpointUrl = template ? `${PUBLIC_API_BASE}/t/${template.id}` : ''
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex flex-col">
+    <div className="min-h-screen bg-carbon flex flex-col">
       <Header />
-      <main className="flex-1 container mx-auto px-4 py-10 max-w-5xl">
+      <main id="content" className="flex-1 container mx-auto px-4 py-10 max-w-5xl">
         <Link href="/templates" className="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-white transition-colors mb-6">
           <ArrowLeft className="w-4 h-4" /> Back to Explore
         </Link>
@@ -181,8 +182,16 @@ export function TemplateDetailClient({ id }: { id: string }) {
 
             {/* Schema fields */}
             {Object.keys(schemaProperties).length > 0 && (
-              <section>
-                <h2 className="text-lg font-bold text-white mb-3">Schema Fields</h2>
+              <section className="space-y-4">
+                <h2 className="font-display text-2xl text-white">Schema fields</h2>
+                <FieldFlow
+                  resource={template.slug || template.name}
+                  fields={Object.entries(schemaProperties).map(([name, value]) => ({
+                    name,
+                    type: value?.type,
+                    generator: value?.['x-generator'],
+                  }))}
+                />
                 <SchemaFieldsTable properties={schemaProperties} required={schemaRequired} />
               </section>
             )}

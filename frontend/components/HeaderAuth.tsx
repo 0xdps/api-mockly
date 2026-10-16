@@ -15,7 +15,7 @@ export function HeaderAuth() {
     return (
       <Link
         href="/dashboard"
-        className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors font-medium text-sm"
+        className="flex items-center gap-2 px-3 py-1.5 text-sm text-slate-200 hover:text-white"
       >
         <LayoutDashboard className="w-4 h-4" />
         Dashboard
@@ -26,7 +26,7 @@ export function HeaderAuth() {
   return (
     <Link
       href="/login"
-      className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-indigo-600 text-white text-sm font-medium hover:bg-indigo-500 transition-colors"
+        className="flex items-center gap-2 bg-action px-3 py-1.5 text-sm font-medium text-white hover:bg-primary-600"
     >
       <LogIn className="w-4 h-4" />
       Sign in

@@ -8,6 +8,7 @@ import { listPublicTemplates } from '@/lib/mockly-api'
 import type { MocklyTemplate } from '@/types/mockly'
 import { Globe, FileCode2, Search, ArrowRight, Loader2, Plus, Star, ExternalLink } from 'lucide-react'
 import { schemasManifest } from '@/lib/schemas-manifest'
+import { SchemaCircuit } from '@/components/motion/SchemaCircuit'
 
 const API_BASE = 'https://api.mockly.codes/v1'
 const PAGE_SIZE = 24
@@ -62,10 +63,10 @@ export function ExploreTemplatesClient() {
   )
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex flex-col">
+    <div className="min-h-screen bg-carbon flex flex-col">
       <Header />
 
-      <main className="flex-1 container mx-auto px-4 py-12">
+      <main id="content" className="flex-1 container mx-auto px-4 py-12">
         {/* Hero */}
         <div className="text-center mb-12 relative">
           <div className="absolute inset-0 -top-12 pointer-events-none">
@@ -75,11 +76,14 @@ export function ExploreTemplatesClient() {
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-xs font-medium mb-5">
               <Globe className="w-3.5 h-3.5" /> 100+ Official Templates
             </div>
-            <h1 className="text-4xl font-bold text-white mb-3">Explore Templates</h1>
+            <h1 className="font-display text-4xl text-white mb-3">Catalog</h1>
             <p className="text-slate-400 max-w-lg mx-auto text-sm leading-relaxed">
-              100+ official schemas and community templates. Pick one, call the endpoint, get realistic data instantly.
+              Official schemas and community templates. Open one to see its fields become a live endpoint.
             </p>
           </div>
+        </div>
+        <div className="mx-auto mb-10 max-w-3xl">
+          <SchemaCircuit />
         </div>
 
         {/* Search */}

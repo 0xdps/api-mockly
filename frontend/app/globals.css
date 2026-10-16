@@ -1,67 +1,201 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary-50: #f0f9ff;
-  --color-primary-100: #e0f2fe;
-  --color-primary-500: #0ea5e9;
-  --color-primary-600: #0284c7;
-  --color-primary-700: #0369a1;
+  --color-carbon: #0b1014;
+  --color-panel: #121a20;
+  --color-wire: #2a3943;
+  --color-signal: #4fd1c5;
+  --color-electric: #79a8ff;
+  --color-action: #2e5fd4;
+  --color-warm: #ffb86b;
+  --color-ink: #e7eef2;
 
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --color-primary-50: #eef3ff;
+  --color-primary-100: #d9e4ff;
+  --color-primary-400: #79a8ff;
+  --color-primary-500: #2e5fd4;
+  --color-primary-600: #2451c2;
+  --color-primary-700: #1b3e96;
 
-  /* Premium Design Accents */
-  --shadow-premium:
-    0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  --glass-bg: rgba(15, 23, 42, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-blur: blur(12px);
+  --color-slate-950: #070b0e;
+  --color-slate-900: #0b1014;
+  --color-slate-800: #121a20;
+  --color-slate-700: #1c2830;
+  --color-slate-600: #2a3943;
+  --color-slate-500: #7d909c;
+  --color-slate-400: #a8bac4;
+  --color-slate-300: #d5e0e6;
+  --color-slate-200: #e7eef2;
+  --color-slate-100: #f4f7f8;
+
+  --font-sans: var(--font-plex), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-space), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  --shadow-premium: none;
+  --glass-bg: #121a20;
+  --glass-border: #2a3943;
+  --glass-blur: none;
 }
 
 :root {
-  --foreground-rgb: 15, 23, 42;
-  --background-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 241, 245, 249;
-    --background-rgb: 15, 23, 42;
-  }
+  --foreground-rgb: 231, 238, 242;
+  --background-rgb: 11, 16, 20;
+  color-scheme: dark;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
+  font-feature-settings: "ss01" on, "cv11" on;
 }
 
-/* Custom scrollbar */
+::selection {
+  background: #2e5fd4;
+  color: #f4f7f8;
+}
+
+:focus-visible {
+  outline: 2px solid #79a8ff;
+  outline-offset: 2px;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1e293b;
+  background: #0b1014;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #475569;
+  background: #2a3943;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #64748b;
+  background: #3d5160;
 }
 
-/* Code block styles */
 pre {
-  background: #1e293b;
+  background: #070b0e;
+  border: 1px solid #2a3943;
   border-radius: 0.5rem;
   padding: 1rem;
   overflow-x: auto;
 }
 
 code {
-  font-family: "Courier New", monospace;
+  font-family: var(--font-mono);
   font-size: 0.875rem;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 80;
+  border-radius: 0.375rem;
+  background: #e7eef2;
+  color: #0b1014;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
+}
+
+@keyframes flow-dash {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+
+@keyframes packet-x {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  14% {
+    opacity: 1;
+  }
+  86% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(var(--travel, 88px));
+    opacity: 0;
+  }
+}
+
+@keyframes packet-y {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  14% {
+    opacity: 1;
+  }
+  86% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(var(--travel, 72px));
+    opacity: 0;
+  }
+}
+
+@keyframes node-breathe {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes value-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.motion-flow {
+  stroke-dasharray: 4 7;
+  animation: flow-dash 1.35s linear infinite;
+}
+
+.motion-packet {
+  animation: packet-x 1.8s ease-in-out infinite;
+}
+
+.motion-packet-y {
+  animation: packet-y 1.8s ease-in-out infinite;
+}
+
+.motion-breathe {
+  animation: node-breathe 2.4s ease-in-out infinite;
+}
+
+.motion-value {
+  animation: value-in 0.45s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-flow,
+  .motion-packet,
+  .motion-packet-y,
+  .motion-breathe,
+  .motion-value {
+    animation: none;
+  }
 }
