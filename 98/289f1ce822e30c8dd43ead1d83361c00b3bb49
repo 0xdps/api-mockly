@@ -1,0 +1,14 @@
+.gitignore
+  h_95aea6b4aa8772 105-111
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "98289f1ce822e30c8dd43ead1d83361c00b3bb49",
+  "prompts": {},
+  "humans": {
+    "h_95aea6b4aa8772": {
+      "author": "Devendra Pratap <dps.manit@gmail.com>"
+    }
+  }
+}
