@@ -1,6 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "api-mockly",
+  "account_id": "532cea73d241b8513e953d361cc25176",
   "compatibility_date": "2026-05-02",
   "compatibility_flags": ["nodejs_compat"],
   "main": ".open-next/worker.js",
