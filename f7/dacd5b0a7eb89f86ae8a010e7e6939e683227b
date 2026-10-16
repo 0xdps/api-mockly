@@ -1,0 +1,19 @@
+frontend/wrangler.jsonc
+  s_559c911b5a0b61::t_3be6dfabd98fb9 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f7dacd5b0a7eb89f86ae8a010e7e6939e683227b",
+  "prompts": {},
+  "sessions": {
+    "s_559c911b5a0b61": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "fbcb2e44-636b-47ea-a338-ae967e3a3e98",
+        "model": "grok-4.7"
+      },
+      "human_author": "Devendra Pratap <dps.manit@gmail.com>"
+    }
+  }
+}
