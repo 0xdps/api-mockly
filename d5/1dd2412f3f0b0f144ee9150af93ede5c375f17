@@ -1,0 +1,97 @@
+frontend/app/docs/page.tsx
+  s_559c911b5a0b61::t_14654d55058f17 290
+  s_559c911b5a0b61::t_37707677fd47a5 25-27
+  s_559c911b5a0b61::t_8d599f938bc465 145,148
+  s_559c911b5a0b61::t_c8241faed82514 202-203
+  s_559c911b5a0b61::t_876c973b91adbf 188
+  s_559c911b5a0b61::t_60975e03cd01b2 291
+  s_559c911b5a0b61::t_3ac575e258c330 271-273
+  s_559c911b5a0b61::t_0b0a8ec6f9b648 388-390
+frontend/app/dashboard/page.tsx
+  s_559c911b5a0b61::t_14a8d8a85a9539 36-39
+  s_559c911b5a0b61::t_5b30e03e838991 32
+  s_559c911b5a0b61::t_828ef807c70288 41
+  s_559c911b5a0b61::t_adaf70693a3295 9
+frontend/app/login/page.tsx
+  s_559c911b5a0b61::t_a96fede2b1ea1e 57
+  s_559c911b5a0b61::t_74ccfce200ae94 37-44,47
+  s_559c911b5a0b61::t_5dcdd7c0158b67 80
+  s_559c911b5a0b61::t_56988d859da22a 35-36
+  s_559c911b5a0b61::t_0f6f131a5714b8 3,5-6
+frontend/components/motion/SchemaCircuit.tsx
+  s_559c911b5a0b61::t_98c7a8dee0554d 1-105
+frontend/app/page.tsx
+  s_559c911b5a0b61::t_5dc678033d8308 60-61
+  s_559c911b5a0b61::t_4c96404ca7e323 4-8,10,20,22-44,46-48,50-59,63-66,68,70-73,75-78
+  s_559c911b5a0b61::t_be31d4592d21e9 11-17
+  s_559c911b5a0b61::t_d7200ba33b887d 62
+frontend/components/motion/AuthRails.tsx
+  s_559c911b5a0b61::t_a7c9d5d7ed245b 1-27
+frontend/components/motion/MiddlewareTunnel.tsx
+  s_559c911b5a0b61::t_abb6075327d5ca 1-38
+frontend/components/Header.tsx
+  s_559c911b5a0b61::t_d86d10b1637175 1-3,6-7,14-19,21-27,29-34,36-54,57,59,63-73,75-92
+frontend/app/resources/layout.tsx
+  s_559c911b5a0b61::t_40a574b13677c3 25
+  s_559c911b5a0b61::t_d58e766334b8f4 40
+frontend/app/playground/layout.tsx
+  s_559c911b5a0b61::t_1840767d8b187f 9
+  s_559c911b5a0b61::t_90ab2e93de9e1a 12
+frontend/app/playground/template.tsx
+  s_559c911b5a0b61::t_d630ff242774ba 105-109
+  s_559c911b5a0b61::t_a09ca497f3912d 7
+  s_559c911b5a0b61::t_8b03142c267f92 75
+  s_559c911b5a0b61::t_3d0afdb7bc1d23 24-37
+  s_559c911b5a0b61::t_93fa1b730dd92b 54-55
+  s_559c911b5a0b61::t_074116f42ff338 80
+  s_559c911b5a0b61::t_0e3c1b4327f693 92
+frontend/components/HeaderAuth.tsx
+  s_559c911b5a0b61::t_788daaf3506261 18
+  s_559c911b5a0b61::t_6b012627a81105 29
+frontend/app/templates/[id]/TemplateDetailClient.tsx
+  s_559c911b5a0b61::t_03322ca13841e3 111,113
+  s_559c911b5a0b61::t_00e3d4a76af083 185-194
+  s_559c911b5a0b61::t_a321d46feed472 21
+frontend/components/motion/FieldFlow.tsx
+  s_559c911b5a0b61::t_8ff79435720e34 1-60
+frontend/components/ResourceDocumentation.tsx
+  s_559c911b5a0b61::t_8249dc6fc26343 27
+  s_559c911b5a0b61::t_72c4c6035f9677 344-352
+  s_559c911b5a0b61::t_3c70e2f4e172db 358
+  s_559c911b5a0b61::t_4f0b8ecc993e81 806
+frontend/app/templates/ExploreTemplatesClient.tsx
+  s_559c911b5a0b61::t_ee442feda87fa1 79,81,85-86
+  s_559c911b5a0b61::t_59dca17485a399 11
+  s_559c911b5a0b61::t_8acbe5d36daf11 66,69
+  s_559c911b5a0b61::t_70a86c230545af 87
+frontend/app/globals.css
+  s_559c911b5a0b61::t_8c795068b216fe 4-11,13-18,20-29,31-38,41-44,50-60,69,73,78,82-83,90-102,104-200
+frontend/app/layout.tsx
+  s_559c911b5a0b61::t_32784db0445d4e 2,7-10,12-24,37
+frontend/app/dashboard/layout.tsx
+  s_559c911b5a0b61::t_371a1db68e621a 122
+  s_559c911b5a0b61::t_e37d7d1119a25f 70,73-83,85
+  s_559c911b5a0b61::t_f55730c68e4dd7 58
+frontend/components/motion/QueryLens.tsx
+  s_559c911b5a0b61::t_aefebc03f7cfcb 1-32
+frontend/components/Footer.tsx
+  s_559c911b5a0b61::t_dcc6879926b2d5 5-33
+frontend/components/motion/LiveSchemaRun.tsx
+  s_559c911b5a0b61::t_e3a8e7fb54b847 1-68
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "d51dd2412f3f0b0f144ee9150af93ede5c375f17",
+  "prompts": {},
+  "sessions": {
+    "s_559c911b5a0b61": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "fbcb2e44-636b-47ea-a338-ae967e3a3e98",
+        "model": "auto-smart"
+      },
+      "human_author": "Devendra Pratap <dps.manit@gmail.com>"
+    }
+  }
+}
